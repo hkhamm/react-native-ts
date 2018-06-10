@@ -24,22 +24,22 @@
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
-    "start": "react-native-scripts start",
+    "baseStart": "react-native-scripts start",
     "eject": "react-native-scripts eject",
-    "android": "react-native-scripts android",
-    "ios": "react-native-scripts ios",
+    "baseAndroid": "react-native-scripts android",
+    "baseIOS": "react-native-scripts ios",
     "test": "jest",
     "lint": "tslint src/**/*.ts",
     "tsc": "tsc",
     "clean": "rimraf build",
-    "build": "yarn run clean && yarn run tsc --",
-    "watch": "yarn run build -- -w",
-    "watchAndRunAndroid": "concurrently \"yarn run watch\" \"yarn run android\"",
-    "buildRunAndroid": "yarn run build && yarn run watchAndRunAndroid ",
-    "watchAndRunIOS": "concurrently \"yarn run watch\" \"yarn run ios\"",
-    "buildRunIOS": "yarn run build && yarn run watchAndRunIOS ",
-    "watchAndStart": "concurrently \"yarn run watch\" \"yarn run start\"",
-    "buildAndStart": "yarn run build && yarn run watchAndStart "
+    "build": "yarn clean && yarn tsc",
+    "baseWatch": "yarn build -w",
+    "watchAndRunAndroid": "concurrently \"yarn baseWatch\" \"yarn baseAndroid\"",
+    "android": "yarn build && yarn watchAndRunAndroid ",
+    "watchAndRunIOS": "concurrently \"yarn baseWatch\" \"yarn baseIOS\"",
+    "ios": "yarn build && yarn watchAndRunIOS ",
+    "watch": "concurrently \"yarn baseWatch\" \"yarn baseStart\"",
+    "start": "yarn build && yarn watch "
   },
   "jest": {
     "preset": "jest-expo"

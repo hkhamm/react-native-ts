@@ -9,6 +9,10 @@
 # build
 /build
 
+# intellij
+*.iml
+.idea/
+
 # misc
 .env.local
 .env.development.local
