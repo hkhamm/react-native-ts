@@ -73,10 +73,7 @@
       "no-trailing-whitespace": true,
       "object-literal-sort-keys": false,
       "trailing-comma": [
-        true, {
-          "multiline":  "never",
-          "singleline": "never"
-        }
+        false
       ],
       "align": [true],
       "class-name": true,
@@ -102,9 +99,8 @@
         "avoid-escape"
       ],
       "semicolon": [
-        true,
-        "always",
-        "ignore-interfaces"
+        false,
+        "always"
       ],
       "variable-name": [
         true,
