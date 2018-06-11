@@ -24,22 +24,22 @@
   },
   "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
-    "baseStart": "react-native-scripts start",
-    "eject": "react-native-scripts eject",
-    "baseAndroid": "react-native-scripts android",
-    "baseIOS": "react-native-scripts ios",
+    "start": "yarn build && yarn watchAndStart",
+    "android": "yarn build && yarn watchAndRunAndroid",
+    "ios": "yarn build && yarn watchAndRunIOS",
     "test": "jest",
     "lint": "tslint src/**/*.ts",
-    "tsc": "tsc",
     "clean": "rimraf build",
     "build": "yarn clean && yarn tsc",
+    "watchAndStart": "concurrently \"yarn baseWatch\" \"yarn baseStart\"",
+    "tsc": "tsc",
+    "baseStart": "react-native-scripts start",
     "baseWatch": "yarn build -w",
+    "baseAndroid": "react-native-scripts android",
     "watchAndRunAndroid": "concurrently \"yarn baseWatch\" \"yarn baseAndroid\"",
-    "android": "yarn build && yarn watchAndRunAndroid ",
+    "baseIOS": "react-native-scripts ios",
     "watchAndRunIOS": "concurrently \"yarn baseWatch\" \"yarn baseIOS\"",
-    "ios": "yarn build && yarn watchAndRunIOS ",
-    "watch": "concurrently \"yarn baseWatch\" \"yarn baseStart\"",
-    "start": "yarn build && yarn watch "
+    "eject": "react-native-scripts eject"
   },
   "jest": {
     "preset": "jest-expo"

@@ -1,23 +1,50 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React from "react"
+import {StyleSheet, TouchableWithoutFeedback, View} from "react-native"
 
-export default class App extends React.Component<{}, {}> {
+interface State {
+  squares: string[]
+}
+
+export default class App extends React.Component<{}, State> {
+
+  constructor(props: {}) {
+    super(props)
+    this.state = {
+      squares: ["powderblue", "skyblue", "steelblue"]
+    }
+  }
+
+  rotate = () => {
+    const squares: string[] = this.state.squares
+    const square: string = squares.shift()
+    squares.push(square)
+    this.setState({squares})
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up src/App.tsx to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
+      <TouchableWithoutFeedback onPress={this.rotate}>
+        <View style={styles.container}>
+          {this.state.squares.map((color: string, index: number) => {
+            return <View key={`square${index}`} style={[styles.square, {backgroundColor: color}]} />
+          })}
+        </View>
+      </TouchableWithoutFeedback>
     )
   }
+
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
+    flexDirection: "row",
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  square: {
+    flex: 1,
+    height: "100%"
   }
 })

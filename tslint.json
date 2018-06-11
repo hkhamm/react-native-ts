@@ -54,6 +54,7 @@
       "no-unused-expression": true,
       "no-use-before-declare": true,
       "no-var-keyword": true,
+      "no-unused-variable": true,
       "radix": true,
       "switch-default": true,
       "triple-equals": [
@@ -70,7 +71,7 @@
         150
       ],
       "no-require-imports": false,
-      "no-trailing-whitespace": true,
+      "no-trailing-whitespace": false,
       "object-literal-sort-keys": false,
       "trailing-comma": [
         true,
@@ -99,7 +100,7 @@
       ],
       "quotemark": [
         true,
-        "single",
+        "double",
         "avoid-escape"
       ],
       "semicolon": [
