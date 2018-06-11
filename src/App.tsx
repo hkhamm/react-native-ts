@@ -16,8 +16,10 @@ export default class App extends React.Component<{}, State> {
 
   rotate = () => {
     const squares: string[] = this.state.squares
-    const square: string = squares.shift()
-    squares.push(square)
+    const square: string | undefined = squares.shift()
+    if (square !== undefined) {
+      squares.push(square)
+    }
     this.setState({squares})
   }
 
